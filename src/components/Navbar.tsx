@@ -7,8 +7,8 @@ const Navbar = () => {
     { name: "Cadastro", path: "/cadastro" },
     { name: "Agendamentos", path: "/agendamentos" },
     { name: "Buscar", path: "/buscar" },
-    { name: "Doações", path: "/doacoes" },
-    { name: "Login", path: "/login" },
+    // { name: "Doações", path: "/doacoes" },
+    // { name: "Login", path: "/login" },
   ];
 
   return (
