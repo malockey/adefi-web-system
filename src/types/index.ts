@@ -24,23 +24,20 @@ export type Appointment = {
 
 export type Donation = {
   id: string;
-  donorName: string;
-  donorDocument?: string;
-  date: string;
-  description?: string;
-  has_items: boolean;
-  notes?: string;
-  items?: DonationItem[];
-  value?: number; // monetary value of the donation, if applicable
+  donor_name: string;
+  donor_doc?: string; // CPF or CNPJ optional
+  date: Date;
+  registration_date: Date; // date when the donation was registered
+  description?: string; // general description of the donation
+  has_items?: boolean; // indicate if the donation has items (optional)
+  value?: number;
 };
 
 export type DonationItem = {
   id: string;
-  donation_id: string;
-  name: string;
+  donation_id: string; // FK → donation.id
   description?: string;
   quantity: number;
-  registration_date: string;
 };
 
 export type Event = {

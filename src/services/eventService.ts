@@ -23,7 +23,7 @@ export const createEvent = async (event: Omit<Event, 'id'>): Promise<Event> => {
     content: event.content,
     author: event.author,
     date: event.date.toISOString(),
-    image_url: event.imageUrl,
+    image_url: event.image_url,
   };
 
   const { data, error } = await supabase
@@ -67,5 +67,5 @@ const mapDbEventToEvent = (dbEvent: DbEvent): Event => ({
   content: dbEvent.content,
   author: dbEvent.author_id,
   date: new Date(dbEvent.date),
-  imageUrl: dbEvent.image_url,
+  image_url: dbEvent.image_url,
 });

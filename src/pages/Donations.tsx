@@ -365,7 +365,7 @@ const Donations = () => {
             donations.map((donation) => (
               <div key={donation.id} className="border p-3 rounded">
                 <p>
-                  <strong>{donation.donorName}</strong> - {format(new Date(donation.date), "dd/MM/yyyy")}
+                  <strong>{donation.donor_name}</strong> - {format(new Date(donation.date), "dd/MM/yyyy")}
                 </p>
                 {donation.has_items ? (
                   <>

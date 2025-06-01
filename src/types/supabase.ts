@@ -24,22 +24,20 @@ export type DbAppointment = {
 
 export type DbDonation = {
   id: string;
-  donorName: string;
-  donor_document?: string; // CPF or CNPJ optional
-  date: string;
+  donor_name: string;
+  donor_doc?: string; // CPF or CNPJ optional
+  date: Date;
+  registration_date: Date; // date when the donation was registered
   description?: string; // general description of the donation
-  has_items: boolean;
-  notes?: string;
+  has_items?: boolean; // indicate if the donation has items (optional)
   value?: number;
 };
 
 export type DbDonationItem = {
   id: string;
   donation_id: string; // FK → donation.id
-  name: string;
   description?: string;
   quantity: number;
-  registration_date: string;
 };
 
 export type DbEvent = {

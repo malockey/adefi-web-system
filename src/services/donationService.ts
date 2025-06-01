@@ -19,7 +19,7 @@ export const fetchDonations = async (): Promise<Donation[]> => {
 
 export type CreateDonationRequest = {
   donorName: string;
-  amount: number;
+  value: number;
   date: Date;
   message?: string;
 };
@@ -27,7 +27,7 @@ export type CreateDonationRequest = {
 export const createDonation = async (donation: CreateDonationRequest): Promise<Donation> => {
   const dbDonation = {
     donor_name: donation.donorName,
-    amount: donation.amount,
+    value: donation.value,
     date: donation.date.toISOString().split('T')[0],
     message: donation.message,
   };
@@ -48,8 +48,9 @@ export const createDonation = async (donation: CreateDonationRequest): Promise<D
 
 const mapDbDonationToDonation = (dbDonation: DbDonation): Donation => ({
   id: dbDonation.id,
-  donorName: dbDonation.donor_name,
-  amount: dbDonation.amount,
-  date: new Date(dbDonation.date),
-  message: dbDonation.message,
+  donor_name: dbDonation.donor_name,
+  value: dbDonation.value,
+  date: dbDonation.date,
+  registration_date: new Date(dbDonation.registration_date),
+  description: dbDonation.description,
 });
