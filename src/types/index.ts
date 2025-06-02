@@ -42,9 +42,9 @@ export type DonationItem = {
 
 export type Event = {
   id: string;
+  author_name: string; // FK → person.id
   title: string;
   content: string;
-  author: string;
   date: Date;
   image_url?: string;
 };

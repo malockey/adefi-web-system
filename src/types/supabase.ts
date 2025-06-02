@@ -42,9 +42,9 @@ export type DbDonationItem = {
 
 export type DbEvent = {
   id: string;
+  author_name: string; // FK → person.id
   title: string;
   content: string;
-  author_id: string; // FK → person.id
-  date: string;
+  date: Date;
   image_url?: string;
 };
