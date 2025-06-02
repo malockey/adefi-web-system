@@ -8,6 +8,7 @@ export type Person = {
   birth_date?: Date;
   disability?: string; // can be an enum in the database
   is_admin: boolean;
+  auth_id?: string;
   notes?: string;
   registration_date: Date;
 };
