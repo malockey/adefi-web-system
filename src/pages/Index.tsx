@@ -15,8 +15,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { useAuth } from "@/contexts/AuthContext";
 
 const EventsPage = () => {
+  const { isAuthenticated } = useAuth();
   const queryClient = useQueryClient();
 
   const {
@@ -69,7 +71,7 @@ const EventsPage = () => {
     });
   };
 
-  const renderCreateEventDialog = (
+  const renderCreateEventDialog = isAuthenticated && (
     <Dialog>
       <DialogTrigger asChild>
         <Button className="bg-blue-700 hover:bg-blue-800">
@@ -239,11 +241,8 @@ const EventsPage = () => {
               </Card>
             ))}
           </div>
-            {renderCreateEventDialog}
-{/* 
-          <div className="mt-12 bg-blue-50 rounded-lg p-8 shadow-sm text-center">
-            <h2 className="text-3xl font-bold text-blue-800 mb-4">Publique seu evento</h2>
-          </div> */}
+
+          {renderCreateEventDialog}
         </>
       )}
     </div>
