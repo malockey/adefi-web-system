@@ -1,11 +1,10 @@
-
 import { supabase } from '@/lib/supabase';
 import { Event } from '@/types';
 import { DbEvent } from '@/types/supabase';
 
 export const fetchEvents = async (): Promise<Event[]> => {
   const { data, error } = await supabase
-    .from('events')
+    .from('event')
     .select('*')
     .order('date', { ascending: false });
 
@@ -21,13 +20,13 @@ export const createEvent = async (event: Omit<Event, 'id'>): Promise<Event> => {
   const dbEvent = {
     title: event.title,
     content: event.content,
-    author: event.author,
+    author_name: event.author_name,
     date: event.date.toISOString(),
     image_url: event.image_url,
   };
 
   const { data, error } = await supabase
-    .from('events')
+    .from('event')
     .insert(dbEvent)
     .select()
     .single();
@@ -40,32 +39,11 @@ export const createEvent = async (event: Omit<Event, 'id'>): Promise<Event> => {
   return mapDbEventToEvent(data as DbEvent);
 };
 
-export const uploadEventImage = async (file: File): Promise<string> => {
-  const fileName = `event-${Date.now()}-${file.name}`;
-  
-  const { data, error } = await supabase
-    .storage
-    .from('event-images')
-    .upload(fileName, file);
-    
-  if (error) {
-    console.error('Error uploading image:', error);
-    throw new Error('Failed to upload image');
-  }
-  
-  const { data: urlData } = supabase
-    .storage
-    .from('event-images')
-    .getPublicUrl(data.path);
-    
-  return urlData.publicUrl;
-};
-
 const mapDbEventToEvent = (dbEvent: DbEvent): Event => ({
   id: dbEvent.id,
   title: dbEvent.title,
   content: dbEvent.content,
-  author: dbEvent.author_id,
+  author_name: dbEvent.author_name,
   date: new Date(dbEvent.date),
   image_url: dbEvent.image_url,
 });
