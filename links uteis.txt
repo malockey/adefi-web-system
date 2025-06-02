@@ -1,0 +1,9 @@
+github.com : https://github.com/malockey/adefi
+netlify: https://adefi-system.netlify.app/ (tem alguns eventos aleatórios, pessoas aleatórias, afins de teste)
+
+login: professorteste@gmail.com
+senha: teste
+
+todo: subir para rede, será disponibilizado para teste, e caso seja isso mesmo que eles querem, irá ser upado na rede.
+
+existem alguns erros ja percebidos, e algumas features/melhorias que devem ser disponibilizadas até o fim deste próximo mês.
