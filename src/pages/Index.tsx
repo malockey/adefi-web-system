@@ -239,15 +239,11 @@ const EventsPage = () => {
               </Card>
             ))}
           </div>
-
+            {renderCreateEventDialog}
+{/* 
           <div className="mt-12 bg-blue-50 rounded-lg p-8 shadow-sm text-center">
             <h2 className="text-3xl font-bold text-blue-800 mb-4">Publique seu evento</h2>
-            <p className="text-gray-600 mb-6">
-              Você trabalha com pessoas com deficiência e quer divulgar um evento na nossa plataforma?
-              Cadastre seu evento agora e compartilhe seu trabalho com a comunidade.
-            </p>
-            {renderCreateEventDialog}
-          </div>
+          </div> */}
         </>
       )}
     </div>

@@ -1,22 +1,23 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Navbar = () => {
-  const navItems = [
-    { name: "Cadastro", path: "/cadastro" },
-    { name: "Agendamentos", path: "/agendamentos" },
-    { name: "Buscar", path: "/buscar" },
-    // { name: "Doações", path: "/doacoes" },
-    // { name: "Login", path: "/login" },
-  ];
+  const { isAuthenticated, logout } = useAuth();
+
+  const navItems = isAuthenticated
+    ? [
+        { name: "Cadastro", path: "/cadastro" },
+        { name: "Agendamentos", path: "/agendamentos" },
+        { name: "Buscar", path: "/buscar" },
+      ]
+    : [{ name: "Login", path: "/login" }];
 
   return (
     <nav className="bg-blue-700 text-white shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center py-4">
-          
-          {/* Botão ADEFI que leva para '/' */}
           <NavLink
             to="/"
             className="text-2xl font-bold mb-4 md:mb-0 hover:text-blue-300 transition-colors"
@@ -24,7 +25,7 @@ const Navbar = () => {
             ADEFI
           </NavLink>
 
-          <ul className="flex flex-wrap gap-2 md:gap-6">
+          <ul className="flex flex-wrap gap-2 md:gap-6 items-center">
             {navItems.map((item) => (
               <li key={item.path}>
                 <NavLink
@@ -42,6 +43,16 @@ const Navbar = () => {
                 </NavLink>
               </li>
             ))}
+            {isAuthenticated && (
+              <li>
+                <button
+                  onClick={logout}
+                  className="px-3 py-2 rounded-md bg-red-600 hover:bg-red-700 transition-colors"
+                >
+                  Sair
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       </div>
