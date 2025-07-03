@@ -154,6 +154,20 @@ yarn build
 - **Favicon:** adefi.ico.
 
 ---
+## ✔ Login - Teste
+
+- professorteste@gmail.com
+- teste123
+
+---
+
+## 🎨 Personalização Visual
+
+- **Paleta de cores:** tons de azul neutro, cinza para textos e fundo branco.
+- **Tipografia:** sans-serif legível, tamanhos escalonados para hierarquia.
+- **Favicon:** adefi.ico.
+
+---
 
 ## 👤 Autor e Agradecimentos
 
